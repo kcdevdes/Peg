@@ -1,0 +1,73 @@
+Here are the 10 multiple-choice questions based on the input text:
+
+1. What is the primary function of chlorophyll in photosynthesis?
+a) To release oxygen into the air
+b) To absorb sunlight and store energy
+c) To split water molecules
+d) To produce glucose
+
+2. Where does photosynthesis occur in a plant cell?
+a) In the mitochondria
+b) In the chloroplasts
+c) In the nucleus
+d) In the cytoplasm
+
+3. What type of energy is stored in molecules like glucose?
+a) Chemical energy
+b) Mechanical energy
+c) Thermal energy
+d) Electrical energy
+
+4. What is the role of sunlight in the light-dependent reactions of photosynthesis?
+a) To produce glucose
+b) To split water molecules
+c) To release oxygen
+d) To absorb carbon dioxide
+
+5. What is the byproduct of the light-dependent reactions in photosynthesis?
+a) Oxygen and glucose
+b) Carbon dioxide and water
+c) Oxygen only
+d) Glucose only
+
+6. What is the name of the stage in photosynthesis where carbon dioxide is used to produce glucose?
+a) Light-dependent reactions
+b) Calvin cycle
+c) Light-independent reactions
+d) Photosynthetic cycle
+
+7. What is the end product of the Calvin cycle in photosynthesis?
+a) Oxygen
+b) Carbon dioxide
+c) Glucose
+d) Water
+
+8. Which of the following is a key component of photosynthesis?
+a) Chlorophyll
+b) Mitochondria
+c) Nucleus
+d) Cytoplasm
+
+9. What is the primary source of energy for a plant's growth and repair?
+a) Sunlight
+b) Water
+c) Carbon dioxide
+d) Glucose
+
+10. What is the main purpose of glucose production in photosynthesis?
+a) To produce oxygen
+b) To release carbon dioxide
+c) To fuel the plant's energy needs
+d) To store chemical energy
+
+Answer Section:
+1. b) To absorb sunlight and store energy
+2. b) In the chloroplasts
+3. a) Chemical energy
+4. c) To split water molecules
+5. c) Oxygen only
+6. b) Calvin cycle
+7. c) Glucose
+8. a) Chlorophyll
+9. d) Glucose
+10. c) To fuel the plant's energy needs
