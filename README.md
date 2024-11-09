@@ -81,4 +81,4 @@ The success of this project will be measured by:
 - Francis Alcos(fdoalcos)
 - Daniel Chin(djchin123)
 - Tyler Nguyen(tylern3)
-
+- Daniel Gross(dgross16)
