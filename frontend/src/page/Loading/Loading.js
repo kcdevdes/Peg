@@ -1,23 +1,14 @@
-import logo from '../../logo.svg';
-import '../../App.css';
+import React from 'react';
+import './style.css';
 
 function Loading() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>Loading.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"a
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
+        <div className="loading-screen">
+           <div className="spinner-container">
+                <div className="spinner"></div>
+            </div>
+            
+            <p className="loading-text">Loading...</p>
         </div>
     );
 }
