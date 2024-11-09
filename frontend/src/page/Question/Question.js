@@ -55,7 +55,7 @@ const Question = () => {
             setSelectedAnswer(null);
         } else {
             // Quiz completed, navigate to feedback page
-            navigate('/tempquestionresult');
+            navigate('/feedback');
         }
     }
 

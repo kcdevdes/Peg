@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './feedback.css';
+import '../Feedback/feedback.css';
 import useQuestionStore from "../../store";
 
 const TempQuestionResult = () => {
