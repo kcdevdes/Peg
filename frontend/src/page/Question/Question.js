@@ -2,26 +2,19 @@ import React, { useState, useEffect } from 'react';
 import './question.css';
 import './notification.css'
 import {useNavigate} from "react-router-dom";
-
-const questionsData = [
-    { question: "What is 1 + 1?", answer: "2", choices: ["1", "2", "3", "4", "5"] },
-    { question: "What is 2 * 3?", answer: "6", choices: ["5", "6", "7", "8", "9"] },
-    // { question: "What is 10 - 4?", answer: "6", choices: ["4", "5", "6", "7", "8"] },
-    // { question: "What is 15 / 3?", answer: "5", choices: ["3", "4", "5", "6", "7"] },
-    // { question: "What is the square root of 16?", answer: "4", choices: ["2", "3", "4", "5", "6"] },
-    // { question: "What is 7 + 8?", answer: "15", choices: ["13", "14", "15", "16", "17"] },
-    // { question: "What is 9 - 3?", answer: "6", choices: ["5", "6", "7", "8", "9"] },
-    // { question: "What is 5 * 5?", answer: "25", choices: ["20", "21", "22", "25", "30"] },
-    // { question: "What is the value of π (Pi) approximately?", answer: "3.14", choices: ["3.12", "3.14", "3.16", "3.18", ".31"] },
-    // { question: "(10 + 2) / 2 = ?", answer: "6", choices: ["5", "6", "7", "8", "9"] }
-];
+import useStore from '../../store';
 
 const Question = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [notification, setNotification] = useState(null);
-    const [results, setResults] = useState([]);
     const navigate = useNavigate();
+
+    const {
+        questions,
+        results,
+        addResult,
+    } = useStore();
 
     useEffect(() => {
         if (notification) {
@@ -37,10 +30,15 @@ const Question = () => {
     };
 
     const handleSubmit = () => {
-        const currentQuestion = questionsData[currentQuestionIndex];
+        const currentQuestion = questions[currentQuestionIndex];
         const isCorrect = selectedAnswer === currentQuestion.answer;
-        const newResult = { question: currentQuestion.question, userAnswer: selectedAnswer, correct: isCorrect };
-        setResults([...results, newResult]);
+        const newResult = {
+            question: currentQuestion.question,
+            answer: currentQuestion.answer,
+            choices: currentQuestion.choices,
+            selected: selectedAnswer,
+            correct: isCorrect
+        };
 
         if (isCorrect) {
             setNotification({ message: "Correct!", type: "success" });
@@ -48,17 +46,20 @@ const Question = () => {
             setNotification({ message: `Incorrect! The answer is '${currentQuestion.answer}'`, type: "error" });
         }
 
-        if (currentQuestionIndex < questionsData.length - 1) {
+        // Save the result
+        addResult(newResult);
+
+        if (currentQuestionIndex < questions.length - 1) {
+            // Move to the next question
             setCurrentQuestionIndex(prevIndex => prevIndex + 1);
             setSelectedAnswer(null);
         } else {
             // Quiz completed, navigate to feedback page
-            // router.push('/feedback');
             navigate('/feedback');
         }
-    };
+    }
 
-    const currentQuestion = questionsData[currentQuestionIndex];
+    const currentQuestion = questions[currentQuestionIndex];
 
     return (
         <div className="quiz-container">
