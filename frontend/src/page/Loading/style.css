@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: #360f5a;
     animation: fadeInAnimation ease 1.5s;
   }
   
@@ -15,7 +15,7 @@
   .spinner {
     width: 64px;
     height: 64px;
-    border: 4px solid #801BEC;
+    border: 4px solid white;
     border-top: 4px solid transparent;
     border-radius: 50%;
     animation: spin 1s linear infinite;
@@ -25,11 +25,32 @@
     margin-top: 1rem;
     font-size: 1.5rem;
     font-weight: 500;
-    color: black
+    color: white;
   }
   
-
-  @keyframes spin {
+  .dots-container {
+    display: inline-flex;
+    overflow: hidden;
+    width: 24px;
+  }
+  .dots {
+    display: inline-flex;
+  }
+  
+  .dot {
+    display: inline-block;
+    width: 6px;
+  }
+   .dot:nth-child(1) {
+    animation: fadeDots 1s infinite ease;
+   }
+    .dot:nth-child(2) {
+     animation: fadeDots 1s infinite ease 0.33s;
+    }
+    .dot:nth-child(3) {
+     animation: fadeDots 1s infinite ease 0.66s;
+    }
+   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
@@ -41,4 +62,10 @@
     100% {
       opacity: 1;
     }
+  }
+
+  @keyframes fadeDots {
+    0% { opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
   }

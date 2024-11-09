@@ -8,7 +8,15 @@ function Loading() {
                 <div className="spinner"></div>
             </div>
             
-            <p className="loading-text">Loading...</p>
+            <h2 className="loading-text">Analyzing
+                <span className="dots-container">
+                    <span className="dots">
+                        <span className="dot">.</span>
+                        <span className="dot">.</span>
+                        <span className="dot">.</span>
+                    </span>
+                </span>
+            </h2>
         </div>
     );
 }
