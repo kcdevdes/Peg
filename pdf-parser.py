@@ -9,10 +9,13 @@ def extract_text(pdf_file):
         text += page.extract_text()
     ##print(text)
     return text
+## want to extract words, formatting?
+# ignore special characters like bullet points?
+# how to differentiate math equations and how to output into text?
 
 ##extract_text("deeznuts.pdf")
 def write_text(text):
     with open("output.txt", "w") as file:
         file.write(text)
         
-write_text(extract_text("deeznuts.pdf"))
+write_text(extract_text("latex-math-ex-2.pdf"))
