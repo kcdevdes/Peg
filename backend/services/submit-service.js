@@ -1,7 +1,7 @@
 const multer = require('multer')
 const { v4: uuidv4, v4} = require('uuid');
 const path = require('path');
-
+const { spawn } = require('child_process');
 
 function hello (req, res) {
     res.send("Hello World - Submit Service")
@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-function handleUpload (req, res) {
+async function handleUpload (req, res) {
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
     }
@@ -28,8 +28,17 @@ function handleUpload (req, res) {
     const file = req.file;
     console.log(file);
 
-    // Process the file as needed
-    res.send('File uploaded successfully.');
+
+    const pythonProcess = await spawn('python3', ['python/script.py', file.path]); // Use 'python' if python3 is not needed
+
+    let output = '';
+    pythonProcess.stdout.on('data', (data) => {
+        console.log(data.toString());
+        res.json(JSON.parse(data.toString()))
+    });
+    pythonProcess.stderr.on('data', (data) => {
+        res.status(500).json({ error: `Internal Server Error: ${data}` });
+    });
 }
 
 module.exports = {hello, upload, handleUpload}
