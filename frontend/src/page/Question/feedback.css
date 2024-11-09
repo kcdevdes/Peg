@@ -1,0 +1,74 @@
+.feedback-header {
+    font-size: 24px;
+    color: #8a2be2;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.score-card {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.score-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.results-container {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.icon {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.icon.check {
+    color: #34a853;
+}
+
+.icon.cross {
+    color: #ea4335;
+}
+
+.feedback-message {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.feedback-message.correct {
+    background-color: #e6f4ea;
+    color: #34a853;
+}
+
+.feedback-message.incorrect {
+    background-color: #fce8e6;
+    color: #ea4335;
+}
+
+/* Scrollbar Styles */
+.results-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.results-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.results-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.results-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
