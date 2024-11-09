@@ -4,6 +4,7 @@ import Index from "./page/Index/Index";
 import Loading from "./page/Loading/Loading";
 import Question from "./page/Question/Question";
 import Feedback from "./page/Feedback/Feedback";
+import TempQuestionResult from "./page/Question/TempQuestionResult";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
               <Route path="/loading" element={<Loading />} />
               <Route path="/question" element={<Question />} />
               <Route path="/feedback" element={<Feedback />} />
+              <Route path="/tempquestionresult" element={<TempQuestionResult />} />
           </Routes>
       </BrowserRouter>
   );
