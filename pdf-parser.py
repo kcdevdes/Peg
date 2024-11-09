@@ -7,10 +7,12 @@ def extract_text(pdf_file):
     for i in range(len(reader.pages)): 
         page = reader.pages[i]
         text += page.extract_text()
-    print(text)
-    
-extract_text("deeznuts.pdf")
+    ##print(text)
+    return text
 
+##extract_text("deeznuts.pdf")
 def write_text(text):
     with open("output.txt", "w") as file:
         file.write(text)
+        
+write_text(extract_text("deeznuts.pdf"))
