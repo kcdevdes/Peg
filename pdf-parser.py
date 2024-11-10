@@ -21,4 +21,3 @@ def write_text(text):
     with open("output.txt", "w") as file:
         file.write(text)
         
-write_text(extract_text(convert_to_image("Resume (4).pdf")))
