@@ -67,7 +67,7 @@ function Index() {
   const handleFiles = (newFiles) => {
     const filesArray = Array.from(newFiles);
     setFiles(filesArray);
-    console.log('Selected or dropped files:', filesArray);
+    // console.log('Selected or dropped files:', filesArray);
   };
 
   const uploadFiles = async () => {
@@ -83,14 +83,17 @@ function Index() {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log('Files uploaded successfully: ', data);
+        // console.log('Files uploaded successfully: ', data);
 
-        data.forEach(question => addQuestion(question));
+        data.forEach(question => {
+          addQuestion(question)
+        });
 
         navigate('/question');
 
       } else {
         console.error('File failed to upload: ', response.statusText);
+        setIsLoading(false);
       }
     } catch (error) {
       console.error('Network error:', error);
