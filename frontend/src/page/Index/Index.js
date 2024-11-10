@@ -86,13 +86,16 @@ function Index() {
 
   return (
     <div className="main">
-      <h1>PEG</h1>
+      <div className="Logo">
+      <h1 className="Logo-1">Practice Exam </h1>
+      <h1 className="Logo-2">&nbsp;Generator</h1>
+      </div>
         <div>
           <div className="container-1">
-            <h2>Drag and drop your course materials.</h2>
-            <div className="container-3">
-              <p>Upload your practice exam and answer key to generate personalized tests and answer keys.</p>
-              <p>Upload your files as a PDF.</p>
+            <h1>Drag and drop your course materials.</h1>
+            <div className="container-3"> 
+              <p className="text">Upload your practice exam and answer key to generate personalized tests and answer keys.</p>
+              <p className="text">Upload your files as a PDF.</p>
             </div>
             <div className="container-2" ref={dropAreaRef}>
               <form className="form">
