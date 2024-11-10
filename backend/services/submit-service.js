@@ -24,21 +24,38 @@ async function handleUpload (req, res) {
         return res.status(400).send('No file uploaded.');
     }
 
-    // Access the uploaded file details
     const file = req.file;
     console.log(file);
 
+    try {
+        const pythonProcess = await spawn('python3', ['python/script.py', file.path]);
 
-    const pythonProcess = await spawn('python3', ['python/script.py', file.path]); // Use 'python' if python3 is not needed
+        let output = '';
+        pythonProcess.stdout.on('data', (data) => {
+            console.log(data.toString());
+            output += data.toString(); // Collect all stdout data
+        });
 
-    let output = '';
-    pythonProcess.stdout.on('data', (data) => {
-        console.log(data.toString());
-        res.json(JSON.parse(data.toString()))
-    });
-    pythonProcess.stderr.on('data', (data) => {
-        res.status(500).json({ error: `Internal Server Error: ${data}` });
-    });
+        pythonProcess.stderr.on('data', (data) => {
+            console.error("ERROR:", data.toString());
+        });
+
+        pythonProcess.on('close', (code) => {
+            if (code === 0) {
+                // Process was successful, send back the output as JSON
+                try {
+                    res.json(JSON.parse(output));
+                } catch (err) {
+                    res.status(500).send('Failed to parse Python output.');
+                }
+            } else {
+                res.status(500).send(`Python process exited with code ${code}`);
+            }
+        });
+    } catch (error) {
+        console.error("Error spawning Python process:", error);
+        res.status(500).send('Internal Server Error');
+    }
 }
 
 module.exports = {hello, upload, handleUpload}
