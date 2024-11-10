@@ -1,12 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../logo.svg';
 import '../../App.css';
 import './index.css';
+import Loading from "../Loading/Loading";
+import useStore from '../../store';
+import {useNavigate} from "react-router-dom";
 
 function Index() {
   const [files, setFiles] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const dropAreaRef = useRef(null);  // Create a ref for the drop area
+  const navigate = useNavigate();
+
+  const {
+    questions,
+    results,
+    addQuestion,
+    addResult,
+  } = useStore();
 
   useEffect(() => {
     const dropArea = dropAreaRef.current;
@@ -62,27 +72,34 @@ function Index() {
 
   const uploadFiles = async () => {
     const formData = new FormData();
-  
-    files.forEach((file) =>{
-      formData.append('files[]', file); // ***** SERVER SIDE KEY *****
+    formData.append('class_file', files[0]);
 
-    });
+    setIsLoading(() => true);
 
     try {
-      const response = await fetch('https://your-server.com/upload',{
+      const response = await fetch('http://localhost:3001/submit/file', {
         method: 'POST',
         body: formData,
       });
-      if (response.ok){
+      if (response.ok) {
         const data = await response.json();
-        console.log('Files uploaded successfully:', data);
+        console.log('Files uploaded successfully: ', data);
+
+        data.forEach(question => addQuestion(question));
+
+        navigate('/question');
+
       } else {
-        console.error('File failed to uploaded', response.statusText);
+        console.error('File failed to upload: ', response.statusText);
       }
-    } catch(error){
-      console.error('Network error:', error)
+    } catch (error) {
+      console.error('Network error:', error);
     }
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="main">
