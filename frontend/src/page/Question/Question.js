@@ -14,16 +14,22 @@ const Question = () => {
         questions,
         results,
         addResult,
+        getQuestionCount,
     } = useStore();
 
     useEffect(() => {
+        if (getQuestionCount() === 0) {
+            console.log('No valid questions found. Redirecting to home page.');
+            navigate('/');
+        }
+
         if (notification) {
             const timer = setTimeout(() => {
                 setNotification(null);
             }, 5000);
             return () => clearTimeout(timer);
         }
-    }, [notification]);
+    }, [notification, getQuestionCount]);
 
     const handleCheckboxChange = (choice) => {
         setSelectedAnswer(prevAnswer => prevAnswer === choice ? null : choice);
@@ -57,6 +63,10 @@ const Question = () => {
             // Quiz completed, navigate to feedback page
             navigate('/feedback');
         }
+    }
+
+    if (questions.length === 0) {
+        return <div>no questions available...</div>;
     }
 
     const currentQuestion = questions[currentQuestionIndex];
