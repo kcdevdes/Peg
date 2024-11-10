@@ -106,7 +106,7 @@ function Index() {
 
   return (
     <div className="main">
-      <h1 style={{textAlign: 'center', color: "#6b28d9"}}>PEG</h1>
+      <h1>PEG</h1>
         <div>
           <div className="container-1">
             <h2>Drag and drop your course materials.</h2>
