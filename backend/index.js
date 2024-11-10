@@ -1,8 +1,13 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const cors = require('cors');
+const port = 3001
 
 const mainRouter = require('./routes/index')
+
+app.use(cors({
+    origin: 'http://localhost:3000' // Allow only your React app's origin
+}));
 
 app.use(mainRouter);
 
